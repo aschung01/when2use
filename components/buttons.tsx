@@ -9,25 +9,30 @@ interface ButtonStyleProps {
     width?: string,
     height?: string;
     fontSize?: string;
+    fontWeight?: string;
     children?: any;
     className?: string;
     key?: any;
     position?: any;
     right?: string;
+    disableRipple?: boolean;
+    sx?: any;
 }
 
 export function ElevatedButton(props: ButtonStyleProps) {
     const BootstrapButton = styled(Button)({
+        transition: '300ms',
         position: props.position,
         right: props.right,
         boxShadow: 'none',
         textTransform: 'none',
-        fontSize: props.fontSize ?? '16px',
-        fontWeight: 'normal',
+        fontSize: props.fontSize ?? '14px',
+        fontWeight: props.fontWeight ?? 'normal',
         padding: '6px 12px',
         width: props.width ?? '80px',
         height: props.height,
-        backgroundColor: props.backgroundColor ?? '#000000',
+        color: props.color ?? 'white',
+        backgroundColor: props.backgroundColor ?? 'black',
         borderRadius: props.borderRadius ?? '10px',
         '&:hover': {
           backgroundColor: props.backgroundColor ?? '#3c3c3c',
@@ -41,7 +46,7 @@ export function ElevatedButton(props: ButtonStyleProps) {
         },
       });
 
-    return <BootstrapButton className={props.className} variant="contained" disableElevation onClick={props.onClick}>{props.children}</BootstrapButton>
+    return <BootstrapButton disableRipple={props.disableRipple} className={props.className} variant="contained" disableElevation onClick={props.onClick} sx={props.sx}>{props.children}</BootstrapButton>
 }
 
 export function TextButton(props: ButtonStyleProps) {

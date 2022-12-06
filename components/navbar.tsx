@@ -17,6 +17,7 @@ export default function NavBar() {
             </Link>
             <style jsx>{`
                 nav {
+                    z-index: 100;
                     background-color: rgba(255, 255, 255, 0.5);
                     height: 60px;
                     width: 100%;

@@ -1,8 +1,10 @@
 import '../styles/globals.css'
 import type { AppProps } from 'next/app'
-import NavBar from '../components/navbar'
+import NavBar from '../components/NavBar'
 import localFont from '@next/font/local'
-import Footer from '../components/footer'
+import Footer from '../components/Footer'
+import { GroupProvider } from '../context/GroupContext'
+import { SnackbarProvider } from 'notistack'
 
 const pretendard = localFont({
   src: [
@@ -45,9 +47,13 @@ const pretendard = localFont({
 })
 
 export default function App({ Component, pageProps }: AppProps) {
-  return <div className={pretendard.className}>
-    <NavBar/>
-    <Component {...pageProps} />
-    <Footer />
+  return <SnackbarProvider maxSnack={1}>
+  <GroupProvider>
+    <div className={pretendard.className}>
+      <NavBar/>
+      <Component {...pageProps} />
+      <Footer />
     </div>
+  </GroupProvider>
+  </SnackbarProvider>
 }

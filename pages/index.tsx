@@ -3,6 +3,7 @@ import Image from 'next/image'
 import { useRouter } from 'next/router';
 import React from 'react';
 import { ElevatedButton } from '../components/buttons';
+import { TextInputField } from '../components/InputField';
 import keyReturn from '../icons/KeyReturn.svg'
 
 export default function Home() {
@@ -31,16 +32,13 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main>
-        <form className="new-group" onSubmit={onSubmit}>
-          <input type="text" placeholder='Enter new group name to start' onChange={onInputChange}/>
-          <Image src={keyReturn} alt="enter"/>
-        </form>
+        <TextInputField onSubmit={onSubmit} onInputChange={onInputChange} placeholder='Enter new group name to start' />
         <p>or</p>
         <form className='existing-group' onSubmit={(e) => {
           e.preventDefault()
         }}>
           <input className='paste' placeholder='Paste your group link here'/>
-          <ElevatedButton onClick={onGoClick} width="100px" height="60px" borderRadius='30px' fontSize="20px" position="absolute" right="10px" >
+          <ElevatedButton onClick={onGoClick} width="100px" height="56px" borderRadius='30px' fontSize="20px" position="absolute" right="6px" >
             Go
           </ElevatedButton>
         </form>
@@ -62,9 +60,11 @@ export default function Home() {
           outline: none;
           width: 600px;
           height: 50px;
-          font-size: 40px;
+          font-size: 32px;
           font-weight: 500;
           text-align: center;
+          background-color: white;
+          color: black;
         }
         p, input::placeholder {
           color: #808080;
@@ -79,11 +79,6 @@ export default function Home() {
           margin: 80px 0;
         }
 
-        .new-group {
-          display: flex;
-          align-items: center;
-        }
-
         .paste {
           flex-grow:2;
         }
@@ -92,8 +87,8 @@ export default function Home() {
           display:flex;
           border:1px solid #e5e5e5;
           border-radius: 50px;
-          width: 800px;
-          height: 80px;
+          width: 700px;
+          height: 68px;
           align-items: center;
           position: relative;
         }
